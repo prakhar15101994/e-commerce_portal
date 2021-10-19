@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}MObile{% endblock title %}
+{% block body %}
+<div class="container my-5">
+ <div class="row">
+  <div class="col-sm-3">
+   <a  href="{% url 'mobile' %}">All mobiles</a><br>
+   <a href="{% url 'mobiledata' 'redmi' %}">Redmi</a><br>
+   <a href="{% url 'mobiledata' 'samsung' %}">Samsung</a><br>
+   <a href="{% url 'mobiledata' 'below' %}">Below 7000</a><br>
+   <a href="{% url 'mobiledata' 'above' %}">Above 7000</a><br>
+  </div>
+  <div class="col-sm-8 offset-sm-1">
+    <div class="row" style="background-color: rgb(199, 219, 233);">
+    {% for mb in mobiles %}
+
+    <div class="card mb-3 mt-3 mx-2 my-2" style="width: auto"  >
+     <a href="{% url 'productdetail' mb.id %}"><img src="{{mb.product_image.url }}" class="card-img-top" alt="..." height="125px"></a> 
+      <div class="card-body">
+        <h5 class="card-title">{{mb.title}}</h5>
+        <h6 class="card-title">{{mb.brand}}</h6>
+        <p class="card-text">Rs{{mb.discount_price}}</p>
+        <!-- <a href="#" class="btn btn-primary">Add to Card</a> -->
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+ </div>
+</div>
+{% endblock body %}

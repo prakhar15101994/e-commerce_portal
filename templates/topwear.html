@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Topwear{% endblock title %}
+{% block body %}
+<div class="container my-5">
+ <div class="row">
+  <div class="col-sm-3">
+   <a  href="{% url 'topwear' %}">All Topwear</a><br>
+   <a href="{% url 'topweardata' 'Wrogn' %}">Wrogn</a><br>
+   <a href="{% url 'topweardata' 'Lee' %}">Lee</a><br>
+   <a href="{% url 'topweardata' 'Reebok' %}">Reebok</a><br>
+   <a href="{% url 'topweardata' 'Zara' %}">Zara</a><br>
+   <a href="{% url 'topweardata' 'below' %}">Below RS.500</a><br>
+   <a href="{% url 'topweardata' 'above' %}">Above Rs.500</a><br>
+  </div>
+  <div class="col-sm-8 offset-sm-1">
+    <div class="row" style="background-color: rgb(199, 219, 233);">
+    {% for tw in topwears %}
+
+    <div class="card mb-3 mt-3 mx-2 my-2" style="width: auto"  >
+     <a href="{% url 'productdetail' tw.id %}"><img src="{{tw.product_image.url }}" class="card-img-top" alt="..." height="125px"></a> 
+      <div class="card-body">
+        <h5 class="card-title">{{tw.title}}</h5>
+        <h6 class="card-title">{{tw.brand}}</h6>
+        <p class="card-text">Rs{{tw.discount_price}}</p>
+        <!-- <a href="#" class="btn btn-primary">Add to Card</a> -->
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+ </div>
+</div>
+{% endblock body %}

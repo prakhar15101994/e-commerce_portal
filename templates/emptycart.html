@@ -1,0 +1,11 @@
+{% extends 'base.html'%}
+{%load static %}
+{% block title %}emptycart {% endblock title%}
+{% block body%}
+<h4>Hello {{request.user}}</h4>
+<div class="text-center">
+    <img src="{% static '/emptycart.jfif' %}" class="rounded" alt="..."><h4>You have no product on your cart</h4>
+  </div>
+
+
+{% endblock body %}
